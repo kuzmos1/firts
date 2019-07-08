@@ -1,2 +1,2 @@
-# firts
+# first
 education repository
