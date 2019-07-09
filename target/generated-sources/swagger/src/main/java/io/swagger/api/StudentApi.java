@@ -5,7 +5,6 @@
  */
 package io.swagger.api;
 
-import hu.eteo.ks.model.dto.StudentDto;
 import io.swagger.model.School;
 import io.swagger.model.Student;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,16 +13,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-07-09T00:18:20.883+02:00[Europe/Berlin]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-07-09T13:47:33.617+02:00[Europe/Berlin]")
 
 @Api(value = "student", description = "the student API")
 public interface StudentApi {
@@ -113,7 +120,7 @@ public interface StudentApi {
     @RequestMapping(value = "/student/{studentId}",
         produces = { "application/xml", "application/json" }, 
         method = RequestMethod.GET)
-    default ResponseEntity<StudentDto> getStudentById(@ApiParam(value = "ID of student to return",required=true) @PathVariable("studentId") Integer studentId) {
+    default ResponseEntity<Student> getStudentById(@ApiParam(value = "ID of student to return",required=true) @PathVariable("studentId") Integer studentId) {
         if(getObjectMapper().isPresent() && getAcceptHeader().isPresent()) {
         } else {
             log.warn("ObjectMapper or HttpServletRequest not configured in default StudentApi interface so no example is generated");

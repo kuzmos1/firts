@@ -42,10 +42,11 @@ public class StudentController implements StudentApi {
     }
 
     @Override
-    public ResponseEntity<StudentDto> getStudentById(Integer studentId) {
-        final StudentDto result = studentService.getStudentById(studentId);
+    public ResponseEntity<Student> getStudentById(Integer studentId) {
+      /*  final StudentDto result = studentService.getStudentById(studentId);
         logger.info("Metódus ok");
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(result);*/
+      return null;
     }
 
     @Override
